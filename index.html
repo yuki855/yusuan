@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>操作指南 - 角色及用户管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f7f9fb;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      background: #2d8cf0;
+      color: #fff;
+      padding: 32px 0 24px 0;
+      text-align: center;
+      letter-spacing: 2px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(45,140,240,0.08);
+    }
+    .container {
+      max-width: 900px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      padding: 40px 36px 32px 36px;
+    }
+    h2 {
+      color: #2d8cf0;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+      border-left: 4px solid #2d8cf0;
+      padding-left: 10px;
+      font-weight: 600;
+    }
+    h3 {
+      color: #222;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    ul, ol {
+      margin: 0 0 16px 24px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .screenshot {
+      margin: 24px 0;
+      text-align: center;
+    }
+    .screenshot img {
+      max-width: 90%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(45,140,240,0.10);
+      border: 1px solid #e6e6e6;
+    }
+    .tip {
+      background: #eaf6ff;
+      border-left: 4px solid #2d8cf0;
+      padding: 12px 18px;
+      margin: 18px 0;
+      color: #2d8cf0;
+      border-radius: 6px;
+      font-size: 0.98rem;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 16px 4vw; }
+      header { font-size: 1.2rem; padding: 18px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    操作指南 | 角色及用户管理
+  </header>
+  <div class="container">
+    <h2>一、角色层级说明</h2>
+    <ol>
+      <li>一级角色：集团预算账户管理员</li>
+      <li>二级角色：预算账户管理员</li>
+      <li>三级角色：额度账户管理员</li>
+      <li>四级角色：项目管理员</li>
+      <li>五级角色：额度管理员</li>
+    </ol>
+
+    <h2>二、功能页面操作</h2>
+
+    <h3>（一）角色管理页面</h3>
+    <ul>
+      <li>支持查看自己拥有的角色以及所属角色层级以下的角色信息。</li>
+      <li>可为角色操作增加人员，并查看已有人员信息。</li>
+    </ul>
+    <div class="tip">
+      <strong>示例说明：</strong>
+      <ul>
+        <li>若为POC，拥有预算账户管理员角色，可查看预算账户管理员角色及组织范围内所有额度账户管理员、项目管理员、额度管理员角色。</li>
+        <li>若为XX部门额度账户管理员，可查看本部门额度账户管理员、项目管理员、额度管理员角色。</li>
+        <li>若为XX项目管理员，可查看项目管理员、额度管理员角色。</li>
+        <li>若为额度管理员，仅可查看额度管理员角色。</li>
+      </ul>
+    </div>
+    <div class="screenshot">
+      <img src="角色管理页面截图.png" alt="角色管理页面截图">
+      <div style="color:#888; font-size:0.95rem; margin-top:6px;">图1：角色管理页面示例</div>
+    </div>
+
+    <h3>（二）用户管理页面</h3>
+    <ul>
+      <li>支持查看自己拥有角色所属角色层级及以下的人员信息。</li>
+      <li>人员原则上继承所属角色操作权限，可在页面调整人员权限。</li>
+    </ul>
+    <div class="tip">
+      <strong>操作示例：</strong>
+      <ul>
+        <li>小A为额度账户管理员，希望小B帮助下发预算额度、发币，但不希望小B创建任务、申请预算，可在项目管理员角色增加用户小B，然后在用户管理页面调整小B的权限。</li>
+      </ul>
+    </div>
+    <div class="screenshot">
+      <img src="用户管理页面截图.png" alt="用户管理页面截图">
+      <div style="color:#888; font-size:0.95rem; margin-top:6px;">图2：用户管理页面示例</div>
+    </div>
+  </div>
+</body>
+</html>
