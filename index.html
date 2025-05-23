@@ -2,133 +2,406 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>操作指南 - 角色及用户管理</title>
+  <title>系统主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      background: #f7f9fb;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background: #f5f6fa;
       margin: 0;
       padding: 0;
       color: #222;
     }
-    header {
-      background: #2d8cf0;
-      color: #fff;
-      padding: 32px 0 24px 0;
-      text-align: center;
-      letter-spacing: 2px;
-      font-size: 2.2rem;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(45,140,240,0.08);
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px 48px 16px;
     }
-    .container {
-      max-width: 900px;
-      margin: 32px auto;
+    .system-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      gap: 18px;
+    }
+    .system-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #2563eb;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .system-actions {
+      display: flex;
+      gap: 18px;
+    }
+    .sys-btn {
+      background: linear-gradient(90deg, #2563eb 60%, #00c9a7 100%);
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 32px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.10);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .sys-btn:hover {
+      background: linear-gradient(90deg, #00c9a7 60%, #2563eb 100%);
+      box-shadow: 0 4px 16px rgba(59,130,246,0.18);
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #e5e7eb;
+      margin-bottom: 24px;
+      gap: 2px;
+    }
+    .tab {
+      padding: 14px 32px 12px 32px;
+      cursor: pointer;
+      font-size: 1.13rem;
+      font-weight: 600;
+      color: #666;
+      background: #f5f6fa;
+      border: none;
+      outline: none;
+      border-radius: 12px 12px 0 0;
+      margin-right: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tab.active {
+      background: #fff;
+      color: #2563eb;
+      border-bottom: 2px solid #fff;
+      box-shadow: 0 -2px 8px rgba(59,130,246,0.04);
+    }
+    .subtabs {
+      display: flex;
+      border-bottom: 1.5px solid #e5e7eb;
+      margin-bottom: 18px;
+      gap: 2px;
+    }
+    .subtab {
+      padding: 10px 22px 8px 22px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #666;
+      background: #f5f6fa;
+      border: none;
+      outline: none;
+      border-radius: 8px 8px 0 0;
+      margin-right: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .subtab.active {
+      background: #fff;
+      color: #2563eb;
+      border-bottom: 2px solid #fff;
+      box-shadow: 0 -2px 8px rgba(59,130,246,0.04);
+    }
+    .tab-content {
+      background: #fff;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.06);
+      padding: 32px 28px 24px 28px;
+      min-height: 320px;
+      margin-bottom: 32px;
+      animation: fadein 0.3s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 32px 0 18px 0;
+      display: flex;
+      align-items: center;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 22px;
+      background: #3b82f6;
+      border-radius: 3px;
+      margin-right: 12px;
+    }
+    .role-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 32px;
+      justify-content: flex-start;
+    }
+    .role-card {
+      flex: 1 1 220px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(59,130,246,0.10);
+      padding: 32px 28px 24px 28px;
+      min-width: 220px;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 18px;
+      transition: box-shadow 0.2s;
+    }
+    .role-card .icon {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+    .role-card-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .role-card-list {
+      width: 100%;
+      padding-left: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .role-card-list li {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .role-card-list li::before {
+      content: '•';
+      color: #3b82f6;
+      font-size: 1.2em;
+      margin-right: 10px;
+      line-height: 1;
+    }
+    .feature-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .feature-card {
+      flex: 1 1 420px;
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-      padding: 40px 36px 32px 36px;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.06);
+      padding: 28px 28px 18px 28px;
+      margin-bottom: 18px;
+      min-width: 320px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    h2 {
-      color: #2d8cf0;
-      margin-top: 32px;
-      margin-bottom: 16px;
-      font-size: 1.4rem;
-      border-left: 4px solid #2d8cf0;
-      padding-left: 10px;
+    .feature-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.13rem;
       font-weight: 600;
-    }
-    h3 {
-      color: #222;
-      margin-top: 24px;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-    ul, ol {
-      margin: 0 0 16px 24px;
-      padding: 0;
-    }
-    li {
       margin-bottom: 8px;
-      line-height: 1.7;
+      color: #2563eb;
     }
-    .screenshot {
-      margin: 24px 0;
+    .feature-title .icon {
+      font-size: 1.5rem;
+      margin-right: 8px;
+      color: #2563eb;
+    }
+    .feature-desc {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .feature-img {
+      margin: 16px 0 10px 0;
       text-align: center;
     }
-    .screenshot img {
-      max-width: 90%;
+    .feature-img img {
+      max-width: 95%;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(45,140,240,0.10);
-      border: 1px solid #e6e6e6;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.08);
     }
-    .tip {
-      background: #eaf6ff;
-      border-left: 4px solid #2d8cf0;
-      padding: 12px 18px;
-      margin: 18px 0;
-      color: #2d8cf0;
-      border-radius: 6px;
+    .feature-example {
+      background: #f3f6fb;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #2563eb;
       font-size: 0.98rem;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    @media (max-width: 1200px) {
+      .role-card { min-width: 200px; max-width: 48vw; }
+    }
+    @media (max-width: 900px) {
+      .role-cards { flex-direction: row; gap: 18px; }
+      .role-card { max-width: 100%; min-width: 160px; }
     }
     @media (max-width: 600px) {
-      .container { padding: 16px 4vw; }
-      header { font-size: 1.2rem; padding: 18px 0; }
+      .role-cards { flex-direction: column; gap: 18px; }
+      .role-card { max-width: 100%; min-width: 120px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    操作指南 | 角色及用户管理
-  </header>
-  <div class="container">
-    <h2>一、角色层级说明</h2>
-    <ol>
-      <li>一级角色：集团预算账户管理员</li>
-      <li>二级角色：预算账户管理员</li>
-      <li>三级角色：额度账户管理员</li>
-      <li>四级角色：项目管理员</li>
-      <li>五级角色：额度管理员</li>
-    </ol>
-
-    <h2>二、功能页面操作</h2>
-
-    <h3>（一）角色管理页面</h3>
-    <ul>
-      <li>支持查看自己拥有的角色以及所属角色层级以下的角色信息。</li>
-      <li>可为角色操作增加人员，并查看已有人员信息。</li>
-    </ul>
-    <div class="tip">
-      <strong>示例说明：</strong>
-      <ul>
-        <li>若为POC，拥有预算账户管理员角色，可查看预算账户管理员角色及组织范围内所有额度账户管理员、项目管理员、额度管理员角色。</li>
-        <li>若为XX部门额度账户管理员，可查看本部门额度账户管理员、项目管理员、额度管理员角色。</li>
-        <li>若为XX项目管理员，可查看项目管理员、额度管理员角色。</li>
-        <li>若为额度管理员，仅可查看额度管理员角色。</li>
-      </ul>
+  <div class="main">
+    <div class="system-header">
+      <div class="system-title">贝壳币预算系统功能介绍</div>
+      <div class="system-actions">
+        <button class="sys-btn" onclick="window.open('https://your-system-entry-url.com','_blank')">系统入口</button>
+        <button class="sys-btn" onclick="window.open('https://your-request-entry-url.com','_blank')">提需入口</button>
+      </div>
     </div>
-    <div class="screenshot">
-      <img src="角色管理页面截图.png" alt="角色管理页面截图">
-      <div style="color:#888; font-size:0.95rem; margin-top:6px;">图1：角色管理页面示例</div>
+    <!-- 一级Tab -->
+    <div class="tabs">
+      <button class="tab active" id="tab-feature" onclick="switchTab('feature')">功能介绍</button>
+      <button class="tab" id="tab-qa" onclick="switchTab('qa')">Q&A</button>
     </div>
-
-    <h3>（二）用户管理页面</h3>
-    <ul>
-      <li>支持查看自己拥有角色所属角色层级及以下的人员信息。</li>
-      <li>人员原则上继承所属角色操作权限，可在页面调整人员权限。</li>
-    </ul>
-    <div class="tip">
-      <strong>操作示例：</strong>
-      <ul>
-        <li>小A为额度账户管理员，希望小B帮助下发预算额度、发币，但不希望小B创建任务、申请预算，可在项目管理员角色增加用户小B，然后在用户管理页面调整小B的权限。</li>
-      </ul>
+    <!-- 二级Tab，仅功能介绍下显示 -->
+    <div class="subtabs" id="subtabs-feature">
+      <button class="subtab active" id="subtab-1" onclick="switchSubtab(1)">角色及用户管理</button>
+      <button class="subtab" id="subtab-2" onclick="switchSubtab(2)">项目及任务管理</button>
+      <button class="subtab" id="subtab-3" onclick="switchSubtab(3)">预算申请及追加</button>
+      <button class="subtab" id="subtab-4" onclick="switchSubtab(4)">预算审批</button>
+      <button class="subtab" id="subtab-5" onclick="switchSubtab(5)">预算执行</button>
     </div>
-    <div class="screenshot">
-      <img src="用户管理页面截图.png" alt="用户管理页面截图">
-      <div style="color:#888; font-size:0.95rem; margin-top:6px;">图2：用户管理页面示例</div>
+    <!-- Tab内容区 -->
+    <div class="tab-content" id="tab-content-feature">
+      <!-- 角色及用户管理内容 -->
+      <div id="feature-content-1">
+        <div class="section-title" style="margin-top:0;">一、角色层级说明</div>
+        <div class="role-cards">
+          <div class="role-card">
+            <span class="icon">🏢</span>
+            <div class="role-card-title">集团预算账户管理员</div>
+            <ul class="role-card-list">
+              <li>分配</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <span class="icon">👔</span>
+            <div class="role-card-title">预算账户管理员</div>
+            <ul class="role-card-list">
+              <li>审批预算</li>
+              <li>预算额度的分配与调整</li>
+              <li>监控预算执行情况</li>
+              <li>预算报表分析</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <span class="icon">⚙️</span>
+            <div class="role-card-title">额度账户管理员</div>
+            <ul class="role-card-list">
+              <li>新建项目</li>
+              <li>新建激励任务</li>
+              <li>申请预算</li>
+              <li>下发额度</li>
+              <li>激励发币</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <span class="icon">🛠️</span>
+            <div class="role-card-title">项目管理员</div>
+            <ul class="role-card-list">
+              <li>管理项目</li>
+              <li>使用项目额度（下发额度、激励发币）</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <span class="icon">⚖️</span>
+            <div class="role-card-title">额度管理员</div>
+            <ul class="role-card-list">
+              <li>使用分配自己的预算额度（下发额度、激励发币）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-title">二、功能页面操作说明</div>
+        <div class="feature-row">
+          <div class="feature-card">
+            <div class="feature-title">
+              <span class="icon">👥</span>
+              角色管理页面
+            </div>
+            <div class="feature-desc">
+              主要功能：支持查看自己拥有的角色以及所属角色层级以下的角色信息，可为角色操作增加人员并查看已有人员信息。
+            </div>
+            <div class="feature-img">
+              <img src="角色管理页面截图.png" alt="角色管理页面截图">
+            </div>
+            <div class="feature-example">
+              示例说明：<br>
+              若为POC，拥有预算账户管理员角色，可查看预算账户管理员角色及组织范围内所有额度账户管理员、项目管理员、额度管理员角色。<br>
+              若为XX部门额度账户管理员，可查看本部门额度账户管理员、项目管理员、额度管理员角色。<br>
+              若为XX项目管理员，可查看项目管理员、额度管理员角色。<br>
+              若为额度管理员，仅可查看额度管理员角色。
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">
+              <span class="icon">👤</span>
+              用户管理页面
+            </div>
+            <div class="feature-desc">
+              主要功能：支持查看自己拥有角色所属角色层级及以下的人员信息，原则上人员继承所属角色操作权限，可调整人员权限。
+            </div>
+            <div class="feature-example">
+              权限调整示例：<br>
+              小A为额度账户管理员，希望小B帮助下发预算额度、发币，但不希望小B创建任务、申请预算，可在项目管理员角色增加用户小B，然后在用户管理页面调整小B的权限。
+            </div>
+            <div class="feature-img">
+              <img src="用户管理页面截图.png" alt="用户管理页面截图">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 其他功能模块内容（空白） -->
+      <div id="feature-content-2" style="display:none;"></div>
+      <div id="feature-content-3" style="display:none;"></div>
+      <div id="feature-content-4" style="display:none;"></div>
+      <div id="feature-content-5" style="display:none;"></div>
+    </div>
+    <div class="tab-content" id="tab-content-qa" style="display:none;">
+      <h2>Q&A</h2>
+      <p>这里可以填写常见问题及解答内容。</p>
     </div>
   </div>
+  <script>
+    // 一级Tab切换
+    function switchTab(tab) {
+      document.getElementById('tab-feature').classList.remove('active');
+      document.getElementById('tab-qa').classList.remove('active');
+      document.getElementById('tab-content-feature').style.display = 'none';
+      document.getElementById('tab-content-qa').style.display = 'none';
+      document.getElementById('subtabs-feature').style.display = 'none';
+      if(tab === 'feature') {
+        document.getElementById('tab-feature').classList.add('active');
+        document.getElementById('tab-content-feature').style.display = '';
+        document.getElementById('subtabs-feature').style.display = 'flex';
+      } else {
+        document.getElementById('tab-qa').classList.add('active');
+        document.getElementById('tab-content-qa').style.display = '';
+      }
+    }
+    // 二级Tab切换
+    function switchSubtab(idx) {
+      for(let i=1;i<=5;i++) {
+        document.getElementById('subtab-'+i).classList.remove('active');
+        document.getElementById('feature-content-'+i).style.display = 'none';
+      }
+      document.getElementById('subtab-'+idx).classList.add('active');
+      document.getElementById('feature-content-'+idx).style.display = '';
+    }
+  </script>
 </body>
-</html>
+</html> 
