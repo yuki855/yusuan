@@ -14,7 +14,7 @@
       color: #222;
     }
     .main {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       padding: 32px 16px 48px 16px;
     }
@@ -252,6 +252,146 @@
       .role-cards { flex-direction: column; gap: 18px; }
       .role-card { max-width: 100%; min-width: 120px; }
     }
+    .business-section { background: #fff; border-radius: 16px; box-shadow: 0 4px 18px rgba(59,130,246,0.10); padding: 36px 28px 32px 28px; margin-bottom: 36px; }
+    .business-title { font-size: 1.6rem; font-weight: 800; color: #6C63FF; margin-bottom: 10px; }
+    .business-desc { color: #444; font-size: 1.08rem; margin-bottom: 24px; }
+    .business-flow { background: #f8fafc; border-radius: 14px; box-shadow: 0 2px 12px rgba(59,130,246,0.07); padding: 32px 18px 24px 18px; margin-bottom: 18px; }
+    .flow-title { font-size: 1.18rem; font-weight: 600; color: #2563eb; margin-bottom: 12px; }
+    .flow-tip {
+      display: none;
+    }
+    .business-roles { margin-top: 32px; }
+    .biz-timeline { margin-top: 32px; background: #f5f6fa; border-radius: 10px; padding: 18px 18px 10px 18px; }
+    .timeline-title { font-weight: 600; color: #2563eb; margin-bottom: 6px; }
+    .timeline-desc { font-size: 1.05rem; color: #333; display: flex; align-items: center; gap: 10px; }
+    .timeline-arrow { font-weight: 600; color: #6C63FF; }
+    .timeline-tip { color: #888; font-size: 0.98rem; }
+    /* 弹窗美化 */
+    #modal-detail { border: 2px solid #2563eb; box-shadow: 0 8px 32px rgba(59,130,246,0.18); animation: popIn 0.25s; }
+    #modal-detail-title { color: #2563eb; }
+    #modal-detail-content { color: #334155; }
+    #modal-detail button { background: linear-gradient(90deg,#2563eb 60%,#6C63FF 100%); transition: background 0.2s; }
+    #modal-detail button:hover { background: #6C63FF; }
+    @keyframes popIn { from { transform: scale(0.85) translate(-50%,-50%); opacity: 0.2; } to { transform: scale(1) translate(-50%,-50%); opacity: 1; } }
+    .biz-account {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .biz-account h3 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .account-tip {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      text-align: center;
+      color: #666;
+      font-size: 15px;
+      border: 1px solid #e0e0e0;
+    }
+    .account-scenario {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    .account-scenario h4 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .account-scenario .mermaid {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .account-scenario .mermaid .node {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+    .account-scenario .mermaid .subgraph-label {
+      font-size: 14px;
+    }
+    .account-scenario p {
+      margin: 10px 0;
+      line-height: 1.6;
+      color: #444;
+    }
+    /* 优化流程图样式 */
+    .mermaid {
+      text-align: left;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .mermaid .subgraph {
+      text-align: left;
+      padding: 15px;
+      margin: 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+    .mermaid .subgraph-label {
+      text-align: left;
+      padding: 8px 15px;
+      font-weight: bold;
+      color: #333;
+      background: #f5f5f5;
+      border-bottom: 2px solid #e0e0e0;
+      border-radius: 4px 4px 0 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .mermaid .node {
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    .mermaid .node.timeNode {
+      background: #fff3e0;
+      border: 1px solid #ff9800;
+      color: #333;
+    }
+    .mermaid .node.bizNode {
+      background: #e3f2fd;
+      border: 1px solid #2196f3;
+      color: #333;
+    }
+    .mermaid .edgeLabel {
+      background: #fff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .mermaid .edgePath {
+      stroke: #666;
+      stroke-width: 1.5;
+    }
+    .scenario-desc {
+      margin: -10px 0 20px 0;
+      padding: 10px 15px;
+      background: #f8f9fa;
+      border-left: 4px solid #2196f3;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    /* 新增：初始隐藏所有Mermaid图 */
+    .mermaid { visibility: hidden; }
+    .mermaid-loading { text-align: center; color: #888; margin: 30px 0; }
   </style>
 </head>
 <body>
@@ -270,16 +410,129 @@
     </div>
     <!-- 二级Tab，仅功能介绍下显示 -->
     <div class="subtabs" id="subtabs-feature">
-      <button class="subtab active" id="subtab-1" onclick="switchSubtab(1)">角色及用户管理</button>
-      <button class="subtab" id="subtab-2" onclick="switchSubtab(2)">项目及任务管理</button>
-      <button class="subtab" id="subtab-3" onclick="switchSubtab(3)">预算申请及追加</button>
-      <button class="subtab" id="subtab-4" onclick="switchSubtab(4)">预算审批</button>
-      <button class="subtab" id="subtab-5" onclick="switchSubtab(5)">预算执行</button>
+      <button class="subtab active" id="subtab-1" onclick="switchSubtab(1)">业务介绍</button>
+      <button class="subtab" id="subtab-2" onclick="switchSubtab(2)">角色及用户管理</button>
+      <button class="subtab" id="subtab-3" onclick="switchSubtab(3)">项目及任务管理</button>
+      <button class="subtab" id="subtab-4" onclick="switchSubtab(4)">预算申请及追加</button>
+      <button class="subtab" id="subtab-5" onclick="switchSubtab(5)">预算审批</button>
+      <button class="subtab" id="subtab-6" onclick="switchSubtab(6)">预算执行</button>
     </div>
     <!-- Tab内容区 -->
     <div class="tab-content" id="tab-content-feature">
-      <!-- 角色及用户管理内容 -->
+      <!-- 业务介绍Tab内容 -->
       <div id="feature-content-1">
+        <div class="biz-intro">
+          <div class="biz-header">
+            <h2>业务介绍</h2>
+            <p>贝壳币预算管理系统的核心业务流程</p>
+          </div>
+          <div class="biz-flow">
+            <div class="flow-chart">
+              <div class="mermaid-loading">流程图加载中...</div>
+              <div class="mermaid">
+%%{init: { 'themeVariables': { 'fontSize': '36px', 'clusterLabelFontSize': '12px' } } }%%
+graph TD
+  classDef mainNode fill:#e3f2fd,stroke:#2196f3,color:#333,stroke-width:2px;
+  classDef timeNode fill:#fff3e0,stroke:#ff9800,color:#333,stroke-width:2px;
+  subgraph 集团预算账户
+    A1[预算录入]:::mainNode
+    AT1[【时间说明：每月录入次月预算】]:::timeNode
+    A2[预算资源分配]:::mainNode
+    AT2[【时间说明：每月分配次月预算，预算贝壳币在预算月1号生效】]:::timeNode
+    A1 -.-> AT1
+    A2 -.-> AT2
+    A1 --> A2
+  end
+  subgraph 额度账户管理员/项目管理员
+    B1[申请预算额度]:::mainNode
+    BT1[【时间说明：每月申请次月预算】]:::timeNode
+    B1 -.-> BT1
+  end
+  subgraph 预算账户管理员
+    B2[审批预算额度]:::mainNode
+    BT2[【时间说明：每月审批次月预算】]:::timeNode
+    B2 -.-> BT2
+  end
+  subgraph 额度账户管理员/项目管理员/额度管理员
+    C1[额度生效]:::mainNode
+    CT1[【时间说明：预算月1号】]:::timeNode
+    C2[分配额度]:::mainNode
+    CT2[【时间说明：额度生效后】]:::timeNode
+    C3[激励发币]:::mainNode
+    CT3[【时间说明：额度生效后】]:::timeNode
+    C1 -.-> CT1
+    C2 -.-> CT2
+    C3 -.-> CT3
+    C1 --> C2
+    C1 --> C3
+  end
+  subgraph 预算账户
+    D1[贝壳币扣减]:::mainNode
+    DT1[【时间说明：激励发币时】]:::timeNode
+    D1 -.-> DT1
+  end
+  A2 --> B1
+  B1 --> B2
+  B2 --> C1
+  C3 --> D1
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="biz-account">
+          <h3 style="text-align:center;">预算账户发币与预算额度使用的业务逻辑说明</h3>
+          <div class="account-scenario">
+            <h4>情况一：项目任务预算额度用完，预算账户内贝壳币有余额</h4>
+            <div class="mermaid-loading">流程图加载中...</div>
+            <div class="scenario-desc">【以场景举例，预算额度使用有效期为1个月，假设预算账户内贝壳币使用有效期为两个月】</div>
+            <div class="mermaid">
+%%{init: {'theme':'base', 'themeVariables':{'fontSize':'20px'}}}%%
+flowchart LR
+  subgraph 2024年3月
+    A1[3月预算审批额度<br>1000<br>有效期1个月]:::blue
+    A2[3月账户入账余额<br>1800<br>有效期2个月]:::orange
+  end
+  subgraph 2024年4月
+    B1[4月预算审批额度<br>1200<br>有效期1个月]:::blue
+    B2[4月账户入账余额<br>2000<br>有效期2个月]:::orange
+  end
+  A1 --额度用完--> A2
+  A2 --结转800到4月--> B2
+  B1 --先用3月结转余额，再用4月新入账--> B2
+  classDef blue fill:#e3f2fd,stroke:#2196f3,color:#333;
+  classDef orange fill:#fff3e0,stroke:#ff9800,color:#333;
+            </div>
+          </div>
+          <div class="account-scenario">
+            <h4>情况二：预算月审批的预算额度超过预算账户入账金额</h4>
+            <div class="mermaid-loading">流程图加载中...</div>
+            <div class="mermaid">
+%%{init: {'theme':'base', 'themeVariables':{'fontSize':'20px'}}}%%
+flowchart LR
+  subgraph 2024年3月
+    A1[3月预算审批额度<br>1000<br>有效期1个月]:::blue
+    A2[3月账户入账余额<br>800<br>有效期2个月]:::orange
+    A3[3月剩余200额度<br>4月过期]:::purple
+  end
+  subgraph 2024年4月
+    B1[4月预算审批额度<br>1200<br>有效期1个月]:::blue
+    B2[4月账户入账余额<br>2000<br>有效期2个月]:::orange
+  end
+  A1 --额度用完，余额不足--> A2
+  A1 --剩余200额度结转到4月过期--> A3
+  A2 --结转0到4月--> B2
+  B1 --只能用4月新入账--> B2
+  A3 --4月过期--> B1
+  classDef blue fill:#e3f2fd,stroke:#2196f3,color:#333;
+  classDef orange fill:#fff3e0,stroke:#ff9800,color:#333;
+  classDef purple fill:#e1d7fc,stroke:#a084e8,color:#333;
+            </div>
+            <div class="scenario-desc">【以场景举例，预算额度使用有效期为1个月，假设预算账户内贝壳币使用有效期为两个月】</div>
+          </div>
+        </div>
+      </div>
+      <!-- 角色及用户管理Tab内容（原feature-content-1内容移到feature-content-2） -->
+      <div id="feature-content-2" style="display:none;">
         <div class="section-title" style="margin-top:0;">一、角色层级说明</div>
         <div class="role-cards">
           <div class="role-card">
@@ -290,7 +543,7 @@
             </ul>
           </div>
           <div class="role-card">
-            <span class="icon">👔</span>
+            <span class="icon">📋</span>
             <div class="role-card-title">预算账户管理员</div>
             <ul class="role-card-list">
               <li>审批预算</li>
@@ -366,17 +619,60 @@
         </div>
       </div>
       <!-- 其他功能模块内容（空白） -->
-      <div id="feature-content-2" style="display:none;"></div>
       <div id="feature-content-3" style="display:none;"></div>
       <div id="feature-content-4" style="display:none;"></div>
       <div id="feature-content-5" style="display:none;"></div>
+      <div id="feature-content-6" style="display:none;"></div>
     </div>
     <div class="tab-content" id="tab-content-qa" style="display:none;">
       <h2>Q&A</h2>
       <p>这里可以填写常见问题及解答内容。</p>
     </div>
   </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mermaid/10.4.0/mermaid.min.js"></script>
   <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      if(window.mermaid) {
+        mermaid.initialize({ startOnLoad: true });
+        // 渲染所有.mermaid元素，渲染完成后再显示，兼容Mermaid v10+
+        mermaid.run({nodes: document.querySelectorAll('.mermaid')}).then(function(){
+          document.querySelectorAll('.mermaid').forEach(function(el){
+            el.style.visibility = 'visible';
+          });
+          document.querySelectorAll('.mermaid-loading').forEach(function(el){
+            el.style.display = 'none';
+          });
+        });
+      }
+    });
+    const nodeTips = {
+      'A1': '【集团预算账户】每月录入次月预算，预算资源以贝壳币形式存储在集团预算账户。',
+      'B1': '【集团预算账户】根据已收定发等逻辑，每月分配次月预算到各管理单元（如各城市预算账户、平台条线预算账户）。预算贝壳币在预算月1号生效。',
+      'C1': '【额度账户管理员/项目管理员】每月通过项目及项目下关联的任务，向预算账户管理员发起次月预算额度申请。',
+      'D1': '【预算账户管理员】每月对已申请的次月预算额度进行审批。审批通过后额度将在预算月1号生效。',
+      'E1': '【系统自动】审批通过的预算额度在预算月1号自动生效。额度账户只记载额度，额度会一直记录在项目-任务上，支持多次分配。',
+      'F1': '【额度账户管理员/项目管理员/额度管理员】额度生效后，可将额度分配给下属账户或项目，额度流转全程可追溯。',
+      'G1': '【额度账户管理员/项目管理员/额度管理员】可用额度进行激励发币，只有激励发币操作会触发贝壳币从预算账户发出。',
+      'H1': '【预算账户】每次激励发币操作，系统会自动从预算账户中扣减相应数量的贝壳币，发放到接收对象账户。',
+      'T1': '预算资源录入的时间为每月录入次月预算。',
+      'T2': '预算资源分配的时间为每月分配次月预算，预算贝壳币在预算月1号生效。',
+      'T3': '申请预算额度的时间为每月申请次月预算。',
+      'T4': '审批预算额度的时间为每月审批次月预算。',
+      'T5': '额度生效的时间为预算月1号。',
+      'T6': '额度生效后可分配额度。',
+      'T7': '额度生效后可激励发币。',
+      'T8': '激励发币时会扣减贝壳币。'
+    };
+    function showModal(key) {
+      document.getElementById('modal-detail-title').innerText = nodeTips[key].title;
+      document.getElementById('modal-detail-content').innerText = nodeTips[key].content;
+      document.getElementById('modal-mask').style.display = 'block';
+      document.getElementById('modal-detail').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('modal-mask').style.display = 'none';
+      document.getElementById('modal-detail').style.display = 'none';
+    }
     // 一级Tab切换
     function switchTab(tab) {
       document.getElementById('tab-feature').classList.remove('active');
@@ -395,12 +691,28 @@
     }
     // 二级Tab切换
     function switchSubtab(idx) {
-      for(let i=1;i<=5;i++) {
+      for(let i=1;i<=6;i++) {
         document.getElementById('subtab-'+i).classList.remove('active');
         document.getElementById('feature-content-'+i).style.display = 'none';
       }
       document.getElementById('subtab-'+idx).classList.add('active');
       document.getElementById('feature-content-'+idx).style.display = '';
+    }
+    function switchSideSubtab(idx) {
+      document.getElementById('side-subtab-1').classList.remove('active');
+      document.getElementById('side-subtab-2').classList.remove('active');
+      document.getElementById('side-content-1').style.display = 'none';
+      document.getElementById('side-content-2').style.display = 'none';
+      document.getElementById('side-subtab-' + idx).classList.add('active');
+      document.getElementById('side-content-' + idx).style.display = '';
+      // 延迟渲染，确保内容已显示
+      setTimeout(function() {
+        if(window.mermaid && mermaid.run) {
+          mermaid.run({nodes: document.querySelectorAll('.mermaid')});
+        } else if(window.mermaid && mermaid.init) {
+          mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        }
+      }, 0);
     }
   </script>
 </body>
