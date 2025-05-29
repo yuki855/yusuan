@@ -590,7 +590,7 @@ flowchart LR
               主要功能：支持查看自己拥有的角色以及所属角色层级以下的角色信息，可为角色操作增加人员并查看已有人员信息。
             </div>
             <div class="feature-img">
-              <img src="角色管理页面截图.png" alt="角色管理页面截图">
+              <img src="角色管理页面截图.png" alt="角色管理页面截图" class="preview-img" style="cursor:pointer;">
             </div>
             <div class="feature-example">
               示例说明：<br>
@@ -613,7 +613,7 @@ flowchart LR
               小A为额度账户管理员，希望小B帮助下发预算额度、发币，但不希望小B创建任务、申请预算，可在项目管理员角色增加用户小B，然后在用户管理页面调整小B的权限。
             </div>
             <div class="feature-img">
-              <img src="用户管理页面截图.png" alt="用户管理页面截图">
+              <img src="用户管理页面截图.png" alt="用户管理页面截图" class="preview-img" style="cursor:pointer;">
             </div>
           </div>
         </div>
@@ -622,57 +622,124 @@ flowchart LR
       <div id="feature-content-3" style="display:none;"></div>
       <div id="feature-content-4" style="display:none;"></div>
       <div id="feature-content-5" style="display:none;"></div>
-      <div id="feature-content-6" style="display:none;"></div>
+      <div id="feature-content-6" style="display:none;">
+        <div class="section-title" style="margin-top:0;">预算执行业务说明</div>
+        <div class="feature-row">
+          <div class="feature-card">
+            <div class="feature-title">
+              <span class="icon">📊</span>
+              预算执行概述
+            </div>
+            <div class="feature-desc">
+              预算执行包含两种主要场景：下发额度和激励发币。每月预算审批后，在预算月1号项目任务的预算额度将自动生效。
+            </div>
+            <div class="mermaid-loading">流程图加载中...</div>
+            <div id="mermaid-exec-1"></div>
+          </div>
+        </div>
+
+        <div class="section-title">使用场景说明</div>
+        <div class="feature-row">
+          <div class="feature-card">
+            <div class="feature-title">
+              <span class="icon">🔄</span>
+              场景一：下发额度
+            </div>
+            <div class="feature-desc">
+              当需要其他用户参与项目任务（协助落地或代发等）时，系统支持授予他人预算额度。授予后，您的额度会相应扣减，接收用户将获得对应额度。
+            </div>
+            <div class="mermaid-loading">流程图加载中...</div>
+            <div id="mermaid-exec-2"></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-title">
+              <span class="icon">💰</span>
+              场景二：激励发币
+            </div>
+            <div class="feature-desc">
+              所有拥有项目任务额度的用户均可直接给任务关联的激励对象进行激励发币。系统支持直接操作激励发币，完成激励发放。
+            </div>
+            <div class="mermaid-loading">流程图加载中...</div>
+            <div id="mermaid-exec-3"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="tab-content" id="tab-content-qa" style="display:none;">
       <h2>Q&A</h2>
       <p>这里可以填写常见问题及解答内容。</p>
     </div>
   </div>
+  <div id="img-modal-mask" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;">
+    <img id="img-modal-img" src="" style="max-width:90vw;max-height:90vh;border-radius:10px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
+  </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/mermaid/10.4.0/mermaid.min.js"></script>
   <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      if(window.mermaid) {
-        mermaid.initialize({ startOnLoad: true });
-        // 渲染所有.mermaid元素，渲染完成后再显示，兼容Mermaid v10+
-        mermaid.run({nodes: document.querySelectorAll('.mermaid')}).then(function(){
-          document.querySelectorAll('.mermaid').forEach(function(el){
-            el.style.visibility = 'visible';
-          });
-          document.querySelectorAll('.mermaid-loading').forEach(function(el){
-            el.style.display = 'none';
-          });
-        });
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      fontFamily: 'Inter, PingFang SC, Microsoft YaHei, Arial, sans-serif',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
       }
     });
-    const nodeTips = {
-      'A1': '【集团预算账户】每月录入次月预算，预算资源以贝壳币形式存储在集团预算账户。',
-      'B1': '【集团预算账户】根据已收定发等逻辑，每月分配次月预算到各管理单元（如各城市预算账户、平台条线预算账户）。预算贝壳币在预算月1号生效。',
-      'C1': '【额度账户管理员/项目管理员】每月通过项目及项目下关联的任务，向预算账户管理员发起次月预算额度申请。',
-      'D1': '【预算账户管理员】每月对已申请的次月预算额度进行审批。审批通过后额度将在预算月1号生效。',
-      'E1': '【系统自动】审批通过的预算额度在预算月1号自动生效。额度账户只记载额度，额度会一直记录在项目-任务上，支持多次分配。',
-      'F1': '【额度账户管理员/项目管理员/额度管理员】额度生效后，可将额度分配给下属账户或项目，额度流转全程可追溯。',
-      'G1': '【额度账户管理员/项目管理员/额度管理员】可用额度进行激励发币，只有激励发币操作会触发贝壳币从预算账户发出。',
-      'H1': '【预算账户】每次激励发币操作，系统会自动从预算账户中扣减相应数量的贝壳币，发放到接收对象账户。',
-      'T1': '预算资源录入的时间为每月录入次月预算。',
-      'T2': '预算资源分配的时间为每月分配次月预算，预算贝壳币在预算月1号生效。',
-      'T3': '申请预算额度的时间为每月申请次月预算。',
-      'T4': '审批预算额度的时间为每月审批次月预算。',
-      'T5': '额度生效的时间为预算月1号。',
-      'T6': '额度生效后可分配额度。',
-      'T7': '额度生效后可激励发币。',
-      'T8': '激励发币时会扣减贝壳币。'
-    };
-    function showModal(key) {
-      document.getElementById('modal-detail-title').innerText = nodeTips[key].title;
-      document.getElementById('modal-detail-content').innerText = nodeTips[key].content;
-      document.getElementById('modal-mask').style.display = 'block';
-      document.getElementById('modal-detail').style.display = 'block';
+
+    // 预算执行Tab流程图内容
+    const execMermaidCodes = [
+      `flowchart TD\nA[预算审批通过] --> B[预算月1号额度生效]\nB --> D[授予其他用户额度]\nB --> E[直接激励任务对象]\nD --> F[额度扣减]\nD --> G[接收用户获取额度]\nE --> H[系统自动发币]`,
+      `flowchart LR\nA[项目任务额度] --> B[选择接收用户]\nB --> C[设置下发额度]\nC --> D[确认下发]\nD --> E[额度扣减]\nD --> F[接收用户额度增加]`,
+      `flowchart LR\nA[项目任务额度] --> B[选择激励对象]\nB --> C[设置激励金额]\nC --> D[确认发币]\nD --> E[额度扣减]\nD --> F[激励对象收到贝壳币]`
+    ];
+
+    function renderExecMermaid() {
+      for (let i = 1; i <= 3; i++) {
+        const container = document.getElementById('mermaid-exec-' + i);
+        if (container) {
+          container.innerHTML = `<div class='mermaid'>${execMermaidCodes[i-1]}</div>`;
+        }
+      }
     }
-    function closeModal() {
-      document.getElementById('modal-mask').style.display = 'none';
-      document.getElementById('modal-detail').style.display = 'none';
+
+    // 只渲染当前可见的mermaid元素
+    function renderMermaidCharts() {
+      renderExecMermaid(); // 动态插入预算执行Tab流程图
+      const mermaidElements = Array.from(document.querySelectorAll('.mermaid'))
+        .filter(el => el.offsetParent !== null);
+      if (mermaidElements.length > 0) {
+        if (window.mermaid && mermaid.init) {
+          mermaid.init(undefined, mermaidElements);
+        } else if (window.mermaid && mermaid.run) {
+          mermaid.run({ nodes: mermaidElements });
+        }
+        mermaidElements.forEach(el => {
+          el.style.visibility = 'visible';
+        });
+        document.querySelectorAll('.mermaid-loading').forEach(el => {
+          el.style.display = 'none';
+        });
+      }
     }
+
+    // 页面加载完成后初始化
+    window.addEventListener('DOMContentLoaded', function() {
+      renderMermaidCharts();
+      // 图片点击放大预览
+      document.querySelectorAll('.preview-img').forEach(function(img) {
+        img.onclick = function() {
+          document.getElementById('img-modal-img').src = this.src;
+          document.getElementById('img-modal-mask').style.display = 'flex';
+        };
+      });
+      document.getElementById('img-modal-mask').onclick = function() {
+        this.style.display = 'none';
+        document.getElementById('img-modal-img').src = '';
+      };
+    });
+
     // 一级Tab切换
     function switchTab(tab) {
       document.getElementById('tab-feature').classList.remove('active');
@@ -688,7 +755,10 @@ flowchart LR
         document.getElementById('tab-qa').classList.add('active');
         document.getElementById('tab-content-qa').style.display = '';
       }
+      // Tab切换后延迟渲染图表，确保DOM已显示
+      setTimeout(renderMermaidCharts, 200);
     }
+
     // 二级Tab切换
     function switchSubtab(idx) {
       for(let i=1;i<=6;i++) {
@@ -697,22 +767,21 @@ flowchart LR
       }
       document.getElementById('subtab-'+idx).classList.add('active');
       document.getElementById('feature-content-'+idx).style.display = '';
+      // 切换后延迟渲染图表，确保DOM已显示
+      setTimeout(renderMermaidCharts, 200);
     }
-    function switchSideSubtab(idx) {
-      document.getElementById('side-subtab-1').classList.remove('active');
-      document.getElementById('side-subtab-2').classList.remove('active');
-      document.getElementById('side-content-1').style.display = 'none';
-      document.getElementById('side-content-2').style.display = 'none';
-      document.getElementById('side-subtab-' + idx).classList.add('active');
-      document.getElementById('side-content-' + idx).style.display = '';
-      // 延迟渲染，确保内容已显示
-      setTimeout(function() {
-        if(window.mermaid && mermaid.run) {
-          mermaid.run({nodes: document.querySelectorAll('.mermaid')});
-        } else if(window.mermaid && mermaid.init) {
-          mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-        }
-      }, 0);
+
+    // 其他现有函数保持不变
+    function showModal(key) {
+      document.getElementById('modal-detail-title').innerText = nodeTips[key].title;
+      document.getElementById('modal-detail-content').innerText = nodeTips[key].content;
+      document.getElementById('modal-mask').style.display = 'block';
+      document.getElementById('modal-detail').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-mask').style.display = 'none';
+      document.getElementById('modal-detail').style.display = 'none';
     }
   </script>
 </body>
